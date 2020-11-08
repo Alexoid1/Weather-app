@@ -1,0 +1,1 @@
+fetch("https://api.openweathermap.org/data/2.5/weather?q=quito&appid=5b117267147ee27ab762fca637060b5f",{mode:"cors"}).then((function(o){return o.json()})).then((function(o){console.log(o)})).catch((function(o){console.log(o)}));
