@@ -1,0 +1,9 @@
+.bgBlue {
+  background: rgb(33, 50, 70);
+}
+
+.boxx {
+  border:5px solid white;
+  border-radius: 15px;
+  color: white;
+}
