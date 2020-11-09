@@ -7,11 +7,10 @@
   height: 280px;
   border-radius: 15px;
   border: 5px solid white;
-  
 }
 
 .boxx {
-  border:5px solid white;
+  border: 5px solid white;
   border-radius: 15px;
   color: white;
   background: rgba(33, 50, 70, 0.589);
@@ -21,10 +20,9 @@
   cursor: pointer;
 }
 
-
 .giphy {
-  height:700px;
+  height: 700px;
   background: url(./img/sun.jpg);
   background-size: cover;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
 }
