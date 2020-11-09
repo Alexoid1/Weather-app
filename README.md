@@ -1,4 +1,4 @@
-# JavaScript Restaurant Page
+# JavaScript Weather app
 This is a weather app that uses Open-Weather-API to get the weather in different cities of the world also use the Unsplash API for the background and Mapbox.js to select the location for latitude and longitude.
 
 ![screenshot](./images/screen.png)
