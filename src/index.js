@@ -1,3 +1,6 @@
+import { map, mapClick } from './map';
+import fineImg from './fineImg';
+
 const form = document.getElementById('form');
 const cit = document.getElementById('cit');
 const country = document.getElementById('country');
@@ -10,7 +13,21 @@ const tempMin = document.getElementById('tempMin');
 const description =  document.getElementById('description');
 const icon = document.getElementById('icon');
 const temp = document.getElementById('temp');
-const giphy = document.getElementById('giphy');
+
+const svgIcon = document.getElementById('svgIcon');
+const mapp = document.getElementById('map');
+
+
+svgIcon.addEventListener('click', ()=>{
+    if(mapp.style.display==='none'){
+        mapp.style.display = 'block';
+    }else {
+        mapp.style.display = 'none';
+    }
+    
+})
+
+
 
 
 const tiempo = new Date();
@@ -28,11 +45,8 @@ form.addEventListener('submit', (e)=>{
     
 })
 
-
-
-
-function fineCity(city){
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=5b117267147ee27ab762fca637060b5f`,{mode: "cors"})
+function fineCityCoords(log,lat){
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${log}&units=metric&appid=5b117267147ee27ab762fca637060b5f`,{mode: "cors"})
     .then(function(response) {
         return response.json();
     })
@@ -50,6 +64,24 @@ function fineCity(city){
     // });
     
     
+}  
+
+
+function fineCity(city){
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=5b117267147ee27ab762fca637060b5f`,{mode: "cors"})
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        
+        changeContent(data.name, data.sys.country, data.main.temp, data.main.feels_like, data.main.temp_max, data.main.temp_min, data.weather[0].description, dia, mes)
+    })
+    .catch(function (error){
+        console.log(error)
+    })
+    
+    
+    
 }       
 
 const changeContent = (city, coun, tempe, feel_like, temp_max, temp_min, desc, dia, mes) => {
@@ -64,33 +96,14 @@ const changeContent = (city, coun, tempe, feel_like, temp_max, temp_min, desc, d
     description.textContent = desc;
     day.textContent = week[dia];
     month.textContent = months[mes];
-    finegiphy(desc)
+    fineImg(desc)
     
 
 }
 
-const apiKey='qO5N_GGS-NvGLQ9-5mQhX99at1FNPmBDCSZDmK6TOdk';
-const secretkey='eLTJDlNcS3bsNgPBVIqmnpg6P0LThtkq-VwQOyQolPk';
 
-function finegiphy(weather){
-    let cli=weather.replace(' ', '-')
-    fetch(`https://api.unsplash.com/search/photos?query=weather-${cli}&client_id=qO5N_GGS-NvGLQ9-5mQhX99at1FNPmBDCSZDmK6TOdk`,{mode: "cors"})
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(gif) {
-        console.log(gif)
-        let select=gif.results[Math.floor(Math.random() * gif.results.length)]
-        changeBackground(select.urls.full)
-       
-    })
-    .catch(function (error){
-        console.log(error)
-    })
-}
+mapClick(map)
 
-function changeBackground(gif){
-    giphy.style.background=`url(${gif})`
-    giphy.style.backgroundSize='cover';
-    giphy.style.backgroundRepeat= 'no-repeat'
-}
+
+
+export {fineCityCoords}

@@ -20,6 +20,7 @@
     "webpack-cli": "^4.2.0"
   },
   "dependencies": {
-    "countries-and-timezones": "^2.3.1"
+    "countries-and-timezones": "^2.3.1",
+    "mapbox-gl": "^1.12.0"
   }
 }
