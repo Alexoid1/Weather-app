@@ -1,4 +1,6 @@
-import { fineCityCoords } from './index'
+import { value } from './index'
+
+import fineCityCoords from './fineCoords'
 
     mapboxgl.accessToken = 'pk.eyJ1IjoiYWxleG9pZDEiLCJhIjoiY2toYWNtdHFuMDJrczJ1cGQ1cDhzeDlydSJ9.9RebTFQYh0sZKtDuBgL98A';
     var map = new mapboxgl.Map({
@@ -11,7 +13,7 @@ import { fineCityCoords } from './index'
 const mapClick = (map) => {
     map.on('click', function(e) {
     
-        fineCityCoords(e.lngLat.lng,e.lngLat.lat);
+        fineCityCoords(e.lngLat.lng,e.lngLat.lat,value);
    });
 
 }

@@ -1,5 +1,6 @@
 import { map, mapClick } from './map';
 import fineImg from './fineImg';
+import fineCity from './fineCity'
 
 const form = document.getElementById('form');
 const cit = document.getElementById('cit');
@@ -13,12 +14,30 @@ const tempMin = document.getElementById('tempMin');
 const description =  document.getElementById('description');
 const icon = document.getElementById('icon');
 const temp = document.getElementById('temp');
-
 const svgIcon = document.getElementById('svgIcon');
 const mapp = document.getElementById('map');
+const metrics = document.getElementById('metrics');
+const grades = document.getElementById('grades');
 
+mapp.style.display = 'none'
+let value ='metric';
 
-svgIcon.addEventListener('click', ()=>{
+metrics.addEventListener('click', ()=> {
+    if(metrics.textContent==='Celsius'){
+        metrics.textContent='Farenheit';
+        value='imperial'
+        grades.textContent='°F'
+        return value
+    }else {
+        metrics.textContent='Celsius';
+        value='metric'
+        grades.textContent='°C'
+        return value
+    }    
+});
+
+svgIcon.addEventListener('click', (e)=>{
+    e.preventDefault()
     if(mapp.style.display==='none'){
         mapp.style.display = 'block';
     }else {
@@ -27,62 +46,14 @@ svgIcon.addEventListener('click', ()=>{
     
 })
 
-
-
-
-const tiempo = new Date();
-const dia = tiempo.getDay();
-const mes = tiempo.getMonth();
-
-let cities=[];
 form.addEventListener('submit', (e)=>{
     e.preventDefault();
-
     const word=document.getElementById('city').value
-    fineCity(word);
+    fineCity(word,value);
     form.reset();
-    
-    
+     
 })
 
-function fineCityCoords(log,lat){
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${log}&units=metric&appid=5b117267147ee27ab762fca637060b5f`,{mode: "cors"})
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(data) {
-        
-        changeContent(data.name, data.sys.country, data.main.temp, data.main.feels_like, data.main.temp_max, data.main.temp_min, data.weather[0].description, dia, mes)
-    })
-    .catch(function (error){
-        console.log(error)
-    })
-    // return notes.filter(function(x){//filtro en el array de objetos notas
-    //     const regex= new RegExp(city,'gi')
-    //     return x.search.match(regex)||x.title.match(regex)||x.type.match(regex)//city y state son propiedades dentro del objeto cities como ya esta creado tiene sus propiedades
-    
-    // });
-    
-    
-}  
-
-
-function fineCity(city){
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=5b117267147ee27ab762fca637060b5f`,{mode: "cors"})
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(data) {
-        
-        changeContent(data.name, data.sys.country, data.main.temp, data.main.feels_like, data.main.temp_max, data.main.temp_min, data.weather[0].description, dia, mes)
-    })
-    .catch(function (error){
-        console.log(error)
-    })
-    
-    
-    
-}       
 
 const changeContent = (city, coun, tempe, feel_like, temp_max, temp_min, desc, dia, mes) => {
     const week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -96,14 +67,9 @@ const changeContent = (city, coun, tempe, feel_like, temp_max, temp_min, desc, d
     description.textContent = desc;
     day.textContent = week[dia];
     month.textContent = months[mes];
-    fineImg(desc)
-    
-
+    fineImg(desc)  
 }
-
 
 mapClick(map)
 
-
-
-export {fineCityCoords}
+export { changeContent, value }

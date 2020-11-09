@@ -15,7 +15,7 @@
       
         
         <div class='col-6 mx-auto row d-flex justify-content-around'>
-            <button class='btn btn-secondary'>Farenheit</button>
+            <button class='btn btn-secondary' id='metrics'>Celsius</button>
             <form class="form-inline mx-auto" id='form'>
                 
                 <input class="form-control mr-sm-2" type="text" placeholder="City" aria-label="Search" id='city'>
@@ -26,16 +26,16 @@
         
     </nav>
 
-    <div class='text-center giphy  pt-5 bg-dark' id='giphy'>
-        <div class='bgBlue boxx col-3 mx-auto pb-3'>
+    <div class='text-center giphy  pt-5' id='giphy'>
+        <div class='boxx col-10 col-md-4 mx-auto pb-3'>
             <h2><span id='cit'>City</span>, <span id='country'>Country</span></h2>
             <p><span id='day'>Day</span>, <span id='month'>Month</span>
-            <h2><span id='temp'>0</span>°C</h2>
+            <h2><span id='temp'>0</span><span id='grades'>°C</span></h2>
             <p>Feel like: <span id='feelsLike'>00</span></p>
-            <span>Temp-max: <span id='tempMax'>00</span></span><span> | Temp-min: <span id='tempMin'>00</span></span> 
+            <span>Temp-max: <span id='tempMax'>00</span></span><span> | Temp-min: <span id='tempMin'>00</span></span><br> 
             <strong>Description: <span id='description'></span> </strong><i id='icon'></i>
         </div>
-        <img src="../public/img/map.png" height="60" class='svgIcon mt-4' id='svgIcon'>
+        <a href='#' id='svgIcon'><img src="../public/img/map.png" height="60" class='svgIcon mt-4' ></a>
         <div id='map' class="mx-auto mt-3"></div>
 
 
