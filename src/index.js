@@ -23,13 +23,13 @@ let value = 'metric';
 metrics.addEventListener('click', () => {
   if (metrics.textContent === 'Celsius') {
     metrics.textContent = 'Farenheit';
-    value = 'imperial';
-    grades.textContent = '°F';
+    value = 'metric';
+    grades.textContent = '°C';
     return value;
   }
   metrics.textContent = 'Celsius';
-  value = 'metric';
-  grades.textContent = '°C';
+  value = 'imperial';
+  grades.textContent = '°F';
   return value;
 });
 

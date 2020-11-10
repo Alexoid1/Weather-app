@@ -5,8 +5,8 @@ const tiempo = new Date();
 const dia = tiempo.getDay();
 const mes = tiempo.getMonth();
 
-const fineCityCoords = (log, lat, value) => {
-  fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${log}&units=${value}&appid=5b117267147ee27ab762fca637060b5f`, { mode: 'cors' })
+const fineCityCoords = async (log, lat, value) => {
+  await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${log}&units=${value}&appid=5b117267147ee27ab762fca637060b5f`, { mode: 'cors' })
     .then((response) => response.json())
     .then((data) => {
       changeContent(data.name,
@@ -18,10 +18,8 @@ const fineCityCoords = (log, lat, value) => {
         data.weather[0].description,
         dia,
         mes);
-    })
-    .catch((error) => {
-      console.log(error);
     });
+    
 };
 
 export default fineCityCoords;
