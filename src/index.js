@@ -52,7 +52,7 @@ form.addEventListener('submit', (e) => {
 
 const changeContent = (city, coun, tempe, feellike, tempmax, tempmin, desc, dia, mes) => {
   const week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  const months = ['January', 'February', 'March', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const months = ['December','January', 'February', 'March', 'May', 'June', 'July', 'August', 'September', 'October', 'November'];
   cit.textContent = city;
   country.textContent = coun;
   temp.textContent = tempe;
