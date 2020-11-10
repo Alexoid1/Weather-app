@@ -14,7 +14,7 @@ This is a weather app that uses Open-Weather-API to get the weather in different
 - Open-Weather-Api
 
 ## Live Demo
-[Live Demo Link](https://rawcdn.githack.com/Alexoid1/Weather-app/14f1009e59269c3b32bd62707172026ef5b5fb44/dist/index.html)
+[Live Demo Link](https://alexoid1.github.io/Weather-app/)
  
 
 ### Prerequisites
